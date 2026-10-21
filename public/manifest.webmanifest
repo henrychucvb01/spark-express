@@ -1,0 +1,14 @@
+{
+  "name": "SPARK Express by CAFELA",
+  "short_name": "SPARK Express",
+  "description": "Faculty lunch preordering from CAFELA.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbf9f3",
+  "theme_color": "#071b43",
+  "icons": [
+    { "src": "/spark-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/spark-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
