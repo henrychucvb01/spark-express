@@ -160,7 +160,7 @@ function App() {
   function saveCode() {
     const blob = new Blob(
       [
-        `SPARK Express recovery code\n\n${recovery}\n\nKeep this private. Use it with your employee number to reset your PIN. It can be used once; resetting your PIN replaces this code.\n`,
+        `Cafe LA Express recovery code\n\n${recovery}\n\nKeep this private. Use it with your employee number to reset your PIN. It can be used once; resetting your PIN replaces this code.\n`,
       ],
       { type: "text/plain" },
     );
@@ -225,7 +225,7 @@ function App() {
           className="brand"
           disabled={recoveryView}
           onClick={() => go("home")}
-          aria-label="SPARK Express home"
+          aria-label="Cafe LA Express home"
         >
           <img
             className="brand-mark"
@@ -235,8 +235,8 @@ function App() {
             height="48"
           />
           <span>
-            <b>SPARK</b>
-            <span className="brand-sub">EXPRESS · BY CAFELA</span>
+            <b>CAFÉ LA</b>
+            <span className="brand-sub">EXPRESS</span>
           </span>
         </button>
         <nav aria-label="Main navigation">
@@ -415,7 +415,7 @@ function App() {
               </span>
               <p className="eyebrow">
                 {view === "registered"
-                  ? "WELCOME TO SPARK EXPRESS"
+                  ? "WELCOME TO CAFE LA EXPRESS"
                   : "YOUR PIN HAS BEEN RESET"}
               </p>
               <h1>Save your way back in.</h1>
@@ -537,7 +537,7 @@ function App() {
               </h2>
               <p>A fresh way to order lunch, made for faculty.</p>
               <div className="aside-line" />
-              <span>CAFELA · SPARK EXPRESS</span>
+              <span>CAFE LA EXPRESS</span>
             </div>
             <div className="account-card">
               <button className="back-link" onClick={() => go("home")}>
@@ -763,7 +763,7 @@ function App() {
       <footer className="footer">
         <span className="footer-brand">
           <img src="/spark-192.png" alt="" width="28" height="28" />
-          SPARK EXPRESS <i>✦</i> CAFELA
+          CAFE LA EXPRESS <i>✦</i> SCHOOL MEALS
         </span>
         <span>A good lunch makes a good day.</span>
         <span>Faculty lunch, thoughtfully made.</span>

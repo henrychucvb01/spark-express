@@ -61,6 +61,8 @@ test("the rendered dummy account completes selection, review, status, and matchi
   };
   await until(() => document.querySelector(".demo-login"));
   assert.match(document.body.textContent, /246810/);
+  assert.equal(document.querySelector(".brand b").textContent, "CAFÉ LA");
+  assert.equal(document.querySelector(".brand").getAttribute("aria-label"), "Cafe LA Express home");
   await click("Sign in to demo");
   await until(() => document.querySelector(".menu-component"));
   const photos = document.querySelectorAll(

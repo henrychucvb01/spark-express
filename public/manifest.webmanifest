@@ -1,6 +1,6 @@
 {
-  "name": "SPARK Express by CAFELA",
-  "short_name": "SPARK Express",
+  "name": "Cafe LA Express",
+  "short_name": "Cafe LA Express",
   "description": "Faculty lunch preordering from CAFELA.",
   "start_url": "/",
   "scope": "/",

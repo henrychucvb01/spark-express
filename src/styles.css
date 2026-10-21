@@ -1022,3 +1022,7 @@ input[type="password"] {
       box-shadow 0.15s ease;
   }
 }
+
+/* Text wordmark inspired by the Cafe LA lettering reference. */
+.brand b { font-family: Arial, Helvetica, sans-serif; font-weight: 900; letter-spacing: -.045em; }
+.brand-sub { letter-spacing: .3em; }

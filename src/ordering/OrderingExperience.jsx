@@ -314,7 +314,7 @@ export default function OrderingExperience({
               <div>
                 <p className="eyebrow">TODAY’S LUNCH · {data.serviceDate}</p>
                 <h2>
-                  SPARK <span>EXPRESS</span>
+                  CAFÉ LA <span>EXPRESS</span>
                 </h2>
                 <p className="menu-board-tagline">
                   YOUR CAMPUS CAFÉ · BY CAFELA
@@ -445,7 +445,7 @@ export default function OrderingExperience({
                 </button>
               </div>
               <p className="menu-board-footer">
-                A GOOD LUNCH MAKES A GOOD DAY. <span>✦</span> SPARK EXPRESS
+                A GOOD LUNCH MAKES A GOOD DAY. <span>✦</span> CAFE LA EXPRESS
               </p>
             </>
           )}
