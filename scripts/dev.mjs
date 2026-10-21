@@ -3,9 +3,12 @@ import { existsSync } from "node:fs";
 import { spawn } from "node:child_process";
 if (existsSync(".env.local")) process.loadEnvFile(".env.local");
 const { default: handler } = await import("../api/account.js");
+const { default: orderingHandler } = await import("../api/ordering.js");
 const server = createServer((req, res) => {
   if (new URL(req.url, "http://localhost").pathname === "/api/account")
     return handler(req, res);
+  if (new URL(req.url, "http://localhost").pathname === "/api/ordering")
+    return orderingHandler(req, res);
   res.writeHead(404);
   res.end("Not found");
 });

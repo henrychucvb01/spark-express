@@ -64,8 +64,13 @@ export function configuration(env = process.env) {
     email: Boolean(env.RESEND_API_KEY && env.EXPRESS_EMAIL_FROM),
   };
 }
-export async function rpc(config, action, data = {}) {
-  const response = await fetch(`${config.url}/rest/v1/rpc/express_service`, {
+export async function rpc(
+  config,
+  action,
+  data = {},
+  functionName = "express_service",
+) {
+  const response = await fetch(`${config.url}/rest/v1/rpc/${functionName}`, {
     method: "POST",
     headers: {
       apikey: config.key,
@@ -78,3 +83,5 @@ export async function rpc(config, action, data = {}) {
   if (!response.ok) throw new Error("Express database request failed.");
   return response.json();
 }
+export const orderingRpc = (config, action, data = {}) =>
+  rpc(config, action, data, "express_ordering");

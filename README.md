@@ -3,7 +3,18 @@
 Faculty lunch preordering for CAFELA at **https://express.cafelalistens.org**.
 Pilot: Banning High School. Managers continue using the existing SPARK dashboard.
 
-## Current milestone: account foundation
+## Current milestone: faculty ordering and workflow demo
+
+Open **https://spark-express.vercel.app/?demo=1** to try the dummy account:
+
+- Name: **Demo Faculty**
+- PIN: **246810**
+
+The demo uses fictional menu choices and browser-memory-only orders. No demo order, employee record, or payment is sent to Supabase, SPARK, a cafeteria, or the district POS. Refreshing clears the demo. It walks through meal selection, review, automatic acceptance, preparation, readiness, and a simulated matching/mismatched pickup check. Camera scanning and district POS QR display remain in the pickup implementation phase.
+
+Faculty ordering now includes today's menu, four required meal components, $6.84 complete lunch pricing, review, idempotent submission, and status refresh. The additive ordering migration validates the account, school, published service date, active options, menu revision, opening time, and cutoff entirely on the server. Orders preserve selected-item snapshots and receive a globally unique date/sequence number atomically. A reused request returns the original order, while changed selections under that request are rejected.
+
+Real ordering remains closed until the isolated-test setup, production backend configuration, manager menu tools, and school schedule are completed. No menus or opening times are seeded in the production database. Milk decline stays unavailable pending district rule confirmation. The demo schedule is explicitly fictional.
 
 Implemented in this branch:
 
@@ -16,7 +27,7 @@ Implemented in this branch:
 - Optional verified email and single-use email reset links (requires a configured sender).
 - Additive Supabase migration, tested against an isolated Postgres instance using PGlite.
 
-**This is not a launch-ready ordering system.** Menu publishing, lunch ordering, kitchen tickets, pickup scanning, POS QR display, manager integration, and notifications are subsequent phases. No production migration or live roster import has been performed by this branch. Without configuration, the frontend works and account access stays closed.
+**This is not a launch-ready ordering system.** Manager menu publishing, kitchen tickets, camera pickup scanning, POS QR display, SPARK manager integration, and notifications are subsequent phases. No production migration or live roster import has been performed by this branch. Without configuration, account access stays closed; the separate demo remains usable.
 
 ## Local development
 
@@ -33,9 +44,12 @@ The frontend runs on port 5173 and the local API on 5174. Leave `EXPRESS_ACCOUNT
 ```sh
 npm test
 npm run build
+npm run test:ui
 ```
 
 Tests exercise the real migration and the API handler with synthetic employees. They cover registration, roster privacy, duplicate names, isolated sessions, reset/revocation, email verification, reset expiry/reuse, CSRF, attempt limits, and database-role restrictions.
+
+Ordering tests also cover today's-only visibility, cutoff enforcement, cross-school item rejection, snapshots, atomic sequence numbers, and retry deduplication. The UI test exercises the built React app in a DOM environment, including demo login, component selections, review, cutoff preview, status changes, and mismatch/match pickup outcomes. It verifies no order POST is sent. This checks interactions; it does not replace visual testing on actual phones or camera testing.
 
 ## Roster validation and import
 
@@ -102,3 +116,9 @@ The migration depends on the existing `public.locations` table. The test suite c
 7. Reuse SSS's working POS encoding (`QRCode.toDataURL(employeeNumber, {errorCorrectionLevel:'M', margin:4, width:600})`). Order-ticket QR codes remain separate and identify unique orders.
 
 Complete lunch is **$6.84 including tax**, as supplied by the project requirements. No payment collection, POS transaction integration, inventory system, or separate manager dashboard belongs in Express. Component-decline policy still needs district confirmation before it is enabled.
+
+## Ordering integration contract
+
+`GET /api/ordering` returns only the signed-in faculty member's published menu and orders for the current Pacific service date. `POST /api/ordering` accepts `menuId`, `revision`, a UUID `requestId`, and four option UUIDs under `selections` (`entree`, `fruit`, `vegetable`, `milk`). Identity, school, price, status, and time are derived by the server. Future menus are never returned as choices; a configured next published opening can be shown after closure.
+
+The second migration creates private menus, menu options, daily sequence counters, orders, and status events. It exposes only a service-role-only `SECURITY INVOKER` RPC, `express_ordering`. Browser roles cannot read any of these tables. The existing SPARK/SSS infrastructure is unchanged. Manager mutation functions in the next phase must lock the menu row, increment its revision when choices change, explicitly authorize the manager's school, and record preparation-status events. Faculty endpoints cannot change preparation status or mark real orders fulfilled.

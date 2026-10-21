@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
+import DemoExperience from "./ordering/DemoExperience";
+import FacultyOrdering from "./ordering/FacultyOrdering";
 
 async function api(action, values = {}) {
   const response = await fetch("/api/account", {
@@ -57,7 +59,11 @@ function App() {
     emailAvailable: false,
     account: null,
   });
-  const [view, setView] = useState("home"),
+  const [view, setView] = useState(() =>
+      new URLSearchParams(window.location.search).get("demo") === "1"
+        ? "demo"
+        : "home",
+    ),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
     [recovery, setRecovery] = useState(""),
@@ -262,7 +268,14 @@ function App() {
         </nav>
       </header>
       <main>
-        {view === "home" ? (
+        {view === "demo" ? (
+          <DemoExperience
+            onExit={() => {
+              history.replaceState(null, "", location.pathname);
+              go("home");
+            }}
+          />
+        ) : view === "home" ? (
           <>
             <section className="hero">
               <div className="hero-copy">
@@ -283,6 +296,15 @@ function App() {
                 </p>
                 <button className="primary" onClick={order}>
                   Order lunch <Icon type="arrow" />
+                </button>
+                <button
+                  className="outline demo-entry"
+                  onClick={() => {
+                    history.replaceState(null, "", "?demo=1");
+                    go("demo");
+                  }}
+                >
+                  Try the faculty demo →
                 </button>
                 <p className="join-note">
                   New here?{" "}
@@ -447,18 +469,7 @@ function App() {
               </h1>
             </div>
             <div className="dashboard-grid">
-              <section className="lunch-panel">
-                <span className="round-icon">
-                  <Icon type="plate" />
-                </span>
-                <p className="eyebrow">TODAY’S LUNCH</p>
-                <h2>Your lunch spot is ready.</h2>
-                <p>
-                  Ordering will open when your school’s lunch service is ready.
-                  Your menu and ordering times will appear here.
-                </p>
-                <span className="pill">PILOT SETUP IN PROGRESS</span>
-              </section>
+              <FacultyOrdering />
               <section className="recovery-panel">
                 <h2>A little peace of mind.</h2>
                 <p>
