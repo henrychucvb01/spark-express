@@ -307,11 +307,19 @@ export default function OrderingExperience({
           </button>
         </section>
       ) : (
-        <>
+        <div className="cafe-menu-board">
           <div className="menu-heading">
-            <div>
-              <p className="eyebrow">TODAY’S LUNCH · {data.serviceDate}</p>
-              <h2>What sounds good?</h2>
+            <div className="menu-board-brand">
+              <img src="/spark-192.png" alt="" width="56" height="56" />
+              <div>
+                <p className="eyebrow">TODAY’S LUNCH · {data.serviceDate}</p>
+                <h2>
+                  SPARK <span>EXPRESS</span>
+                </h2>
+                <p className="menu-board-tagline">
+                  YOUR CAMPUS CAFÉ · BY CAFELA
+                </p>
+              </div>
             </div>
             {menu && (
               <div className="meal-price">
@@ -349,7 +357,10 @@ export default function OrderingExperience({
                 <fieldset
                   key={category}
                   disabled={!data.orderingOpen || busy}
-                  className="menu-component"
+                  className={
+                    "menu-component" +
+                    (category === "entree" ? " entree-component" : "")
+                  }
                 >
                   <legend>
                     <span>{String(index + 1).padStart(2, "0")}</span>
@@ -362,12 +373,24 @@ export default function OrderingExperience({
                         <label
                           className={
                             "menu-choice" +
+                            (category === "entree" ? " entree-choice" : "") +
                             (selections[category] === item.id
                               ? " selected"
                               : "")
                           }
                           key={item.id}
                         >
+                          {category === "entree" && item.imageUrl && (
+                            <span className="menu-photo-frame">
+                              <img
+                                src={item.imageUrl}
+                                alt=""
+                                width="1200"
+                                height="800"
+                                loading="lazy"
+                              />
+                            </span>
+                          )}
                           <input
                             type="radio"
                             name={category}
@@ -375,12 +398,22 @@ export default function OrderingExperience({
                             checked={selections[category] === item.id}
                             onChange={() => choose(category, item.id)}
                           />
-                          <span>
+                          <span className="menu-choice-copy">
                             <b>{item.name}</b>
                             {item.description && (
                               <small>{item.description}</small>
                             )}
                           </span>
+                          {category === "entree" && (
+                            <span className="entree-card-footer">
+                              {selections[category] === item.id
+                                ? "Selected for your lunch"
+                                : "Choose this entrée"}
+                              <span aria-hidden="true">
+                                {selections[category] === item.id ? "✓" : "+"}
+                              </span>
+                            </span>
+                          )}
                           <span className="choice-check" aria-hidden="true">
                             ✓
                           </span>
@@ -389,6 +422,11 @@ export default function OrderingExperience({
                   </div>
                 </fieldset>
               ))}
+              {menu.options.some((item) => item.imageUrl) && (
+                <p className="photo-note">
+                  Sample menu photos for this demo. Actual meals may vary.
+                </p>
+              )}
               <div className="review-order-bar">
                 <span>
                   {complete
@@ -406,6 +444,9 @@ export default function OrderingExperience({
                   Review my lunch →
                 </button>
               </div>
+              <p className="menu-board-footer">
+                A GOOD LUNCH MAKES A GOOD DAY. <span>✦</span> SPARK EXPRESS
+              </p>
             </>
           )}
           {data.orders?.length > 0 && (
@@ -427,7 +468,7 @@ export default function OrderingExperience({
               ))}
             </section>
           )}
-        </>
+        </div>
       )}
     </div>
   );

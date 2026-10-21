@@ -63,6 +63,28 @@ test("the rendered dummy account completes selection, review, status, and matchi
   assert.match(document.body.textContent, /246810/);
   await click("Sign in to demo");
   await until(() => document.querySelector(".menu-component"));
+  const photos = document.querySelectorAll(
+    ".entree-choice .menu-photo-frame img",
+  );
+  assert.equal(photos.length, 2);
+  for (const photo of photos) {
+    assert.match(photo.getAttribute("src"), /^\/menu-photos\/[a-z-]+\.webp$/);
+    assert.ok(
+      (
+        await readFile(
+          new URL("../public" + photo.getAttribute("src"), import.meta.url),
+        )
+      ).length > 0,
+    );
+  }
+  assert.equal(document.querySelectorAll(".meal-price b").length, 1);
+  photos[0].click();
+  await until(() => document.querySelector(".entree-choice.selected"));
+  assert.match(
+    document.querySelector(".entree-choice.selected .entree-card-footer")
+      .textContent,
+    /Selected for your lunch/,
+  );
   await click("Preview ordering cutoff");
   await until(() =>
     document.body.textContent.includes("Ordering is closed for today."),

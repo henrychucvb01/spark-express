@@ -340,6 +340,291 @@
 .demo-actions {
   margin-top: 25px;
 }
+
+/* Café menu board: SPARK shell, cream food cards, and one complete-meal price. */
+.cafe-menu-board {
+  background: #071b43;
+  border: 1px solid #182e56;
+  border-radius: 14px;
+  padding: 28px;
+  color: #fffbed;
+}
+.cafe-menu-board .menu-heading {
+  border-bottom: 1px solid #bd9b4759;
+  padding-bottom: 24px;
+  margin-bottom: 20px;
+}
+.menu-board-brand {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  min-width: 0;
+}
+.menu-board-brand > img {
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+.cafe-menu-board .eyebrow {
+  font-size: 10px;
+  color: #e2d3a1;
+  margin-bottom: 8px;
+}
+.cafe-menu-board .menu-heading h2 {
+  font-family: "Arial Narrow", Impact, Arial, sans-serif;
+  color: #fffbed;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0 0 7px;
+}
+.menu-heading h2 > span {
+  color: #e0bd5c;
+}
+.menu-board-tagline {
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin: 0;
+  color: #c7cfdf;
+  line-height: 1.7;
+}
+.cafe-menu-board .meal-price {
+  padding-left: 22px;
+  border-left: 1px solid #bd9b4759;
+}
+.cafe-menu-board .meal-price b {
+  color: #f1d47c;
+  font-size: 32px;
+}
+.cafe-menu-board .meal-price span {
+  color: #e0e4ec;
+}
+.cafe-menu-board .menu-explanation {
+  color: #e0e4ec;
+  font-size: 13px;
+}
+.cafe-menu-board .cutoff-note {
+  color: #ebce81;
+}
+.cafe-menu-board .menu-component legend {
+  color: #fffbed;
+  font-size: 22px;
+}
+.cafe-menu-board .menu-component legend > span {
+  color: #e0bd5c;
+}
+.entree-component .menu-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+.entree-choice,
+.entree-choice.selected {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid #d8d9c9;
+  border-radius: 9px;
+  background: #f6f3e6;
+  color: #071b43;
+  min-height: 210px;
+}
+.entree-choice.selected {
+  border: 2px solid #edc965;
+  box-shadow: 0 0 0 2px #edc965;
+}
+.menu-photo-frame {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 3/2;
+  background: #e9e2d2;
+}
+.menu-photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.entree-choice > input {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+  accent-color: #071b43;
+  box-shadow: 0 0 0 4px #fffaf0d9;
+  border-radius: 50%;
+}
+.entree-choice .menu-choice-copy {
+  display: block;
+  text-align: center;
+  padding: 22px 22px 18px;
+  flex: 1;
+}
+.entree-choice .menu-choice-copy > b {
+  display: block;
+  font-family: "Arial Narrow", Impact, Arial, sans-serif;
+  font-size: 25px;
+  line-height: 1.15;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  max-width: 290px;
+  margin: auto;
+}
+.entree-choice .menu-choice-copy > small {
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 12px;
+  color: #626956;
+}
+.entree-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-top: 1px solid #c9bb89;
+  color: #76591d;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  gap: 12px;
+}
+.entree-card-footer > span {
+  font-size: 19px;
+  line-height: 1;
+}
+.entree-choice.selected .entree-card-footer {
+  background: #ead397;
+  color: #071b43;
+}
+.entree-choice.selected .choice-check {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #071b43;
+  color: #f1d47c;
+}
+.cafe-menu-board .menu-choice:not(.entree-choice) {
+  color: #071b43;
+  background: #f6f3e6;
+}
+.cafe-menu-board .ordering-panel {
+  color: #071b43;
+}
+.entree-choice:not(:has(.menu-photo-frame)) .menu-choice-copy {
+  padding-top: 52px;
+}
+.cafe-menu-board .menu-choice.selected:not(.entree-choice) {
+  border-color: #e0bd5c;
+  background: #f5e6b9;
+}
+.cafe-menu-board .photo-note {
+  color: #c7cfdf;
+  font-size: 11px;
+  line-height: 1.7;
+  margin-top: 28px;
+}
+.cafe-menu-board .review-order-bar {
+  border-top-color: #bd9b4759;
+}
+.cafe-menu-board .review-order-bar > span {
+  color: #e0e4ec;
+}
+.cafe-menu-board .review-order-bar .primary {
+  background: #e8c96e;
+  color: #071b43;
+  border-color: #e8c96e;
+  box-shadow: 0 3px 0 #9c7929;
+}
+.cafe-menu-board .review-order-bar .primary:hover:enabled {
+  background: #f3d989;
+}
+.menu-board-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  text-align: center;
+  background: #e0bd5c;
+  color: #071b43;
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  font-weight: 600;
+  line-height: 1.7;
+  margin: 28px -15px -15px;
+  padding: 12px 15px;
+  border-radius: 5px;
+}
+.menu-board-footer > span {
+  font-size: 17px;
+}
+@media (max-width: 600px) {
+  .cafe-menu-board {
+    padding: 20px 15px;
+    border-radius: 10px;
+  }
+  .entree-component .menu-options {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .cafe-menu-board .menu-heading {
+    gap: 22px;
+    padding-bottom: 20px;
+  }
+  .menu-board-brand {
+    gap: 12px;
+  }
+  .menu-board-brand > img {
+    width: 44px;
+    height: 44px;
+  }
+  .cafe-menu-board .menu-heading h2 {
+    font-size: 27px;
+    letter-spacing: 0.2px;
+  }
+  .menu-board-tagline {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+  .cafe-menu-board .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .cafe-menu-board .meal-price {
+    padding-left: 0;
+    border: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+  .cafe-menu-board .meal-price b {
+    font-size: 29px;
+  }
+  .cafe-menu-board .meal-price span {
+    font-size: 11px;
+    max-width: 150px;
+    line-height: 1.6;
+  }
+  .menu-board-footer {
+    margin: 25px -4px -9px;
+    gap: 8px;
+    letter-spacing: 1px;
+    font-size: 8px;
+  }
+  .menu-photo-frame {
+    aspect-ratio: 3/2;
+  }
+}
 @media (max-width: 600px) {
   .demo-experience .dashboard-heading h1 {
     font-size: 34px;
