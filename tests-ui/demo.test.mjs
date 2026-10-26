@@ -69,6 +69,7 @@ test("the rendered dummy account completes selection, review, status, and matchi
     ".entree-choice .menu-photo-frame img",
   );
   assert.equal(photos.length, 2);
+  assert.match(document.querySelector(".cafe-summary").textContent, /Choose an option/);
   for (const photo of photos) {
     assert.match(photo.getAttribute("src"), /^\/menu-photos\/[a-z-]+\.webp$/);
     assert.ok(
@@ -97,6 +98,8 @@ test("the rendered dummy account completes selection, review, status, and matchi
     document.querySelector(`input[name="${category}"]`).click();
     await delay(30);
   }
+  assert.match(document.querySelector(".cafe-summary").textContent, /Herb-roasted chicken with rice/);
+  assert.equal(document.querySelectorAll(".cafe-summary dd").length, 4);
   await click("Review my lunch");
   assert.match(document.body.textContent, /Herb-roasted chicken with rice/);
   assert.match(document.body.textContent, /\$6\.84/);

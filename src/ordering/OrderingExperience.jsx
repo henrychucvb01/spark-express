@@ -105,9 +105,6 @@ export default function OrderingExperience({
     <div className="ordering-experience">
       {demoStore && (
         <div className="demo-tools">
-          <span>
-            <b>Practice mode</b> · Sample menu. No real order or charge.
-          </span>
           <button
             className="inline-button"
             onClick={() =>
@@ -313,18 +310,16 @@ export default function OrderingExperience({
               <img src="/spark-192.png" alt="" width="56" height="56" />
               <div>
                 <p className="eyebrow">TODAY’S LUNCH · {data.serviceDate}</p>
-                <h2>
-                  CAFÉ LA <span>EXPRESS</span>
-                </h2>
+                <h2>Today’s Café Menu</h2>
                 <p className="menu-board-tagline">
-                  YOUR CAMPUS CAFÉ · BY CAFELA
+                  Choose your favorites. We’ll take care of the rest.
                 </p>
               </div>
             </div>
             {menu && (
               <div className="meal-price">
                 <b>{money(menu.priceCents)}</b>
-                <span>Complete lunch · tax included</span>
+                <span>Complete adult lunch · tax included</span>
               </div>
             )}
           </div>
@@ -353,6 +348,7 @@ export default function OrderingExperience({
                   Order by {data.cutoffLabel} · Pacific time
                 </p>
               )}
+              <div className="cafe-order-layout"><div className="cafe-selections">
               {categories.map(([category, title], index) => (
                 <fieldset
                   key={category}
@@ -384,10 +380,10 @@ export default function OrderingExperience({
                             <span className="menu-photo-frame">
                               <img
                                 src={item.imageUrl}
-                                alt=""
+                                alt={(demoStore ? "Sample photo: " : "") + item.name}
                                 width="1200"
                                 height="800"
-                                loading="lazy"
+                                loading="eager"
                               />
                             </span>
                           )}
@@ -422,17 +418,27 @@ export default function OrderingExperience({
                   </div>
                 </fieldset>
               ))}
-              {menu.options.some((item) => item.imageUrl) && (
+              </div>
+              <aside className="cafe-summary" aria-label="Your lunch summary">
+                <p className="eyebrow">A BREAK, MADE FOR YOU</p>
+                <h3>Your lunch</h3>
+                <dl aria-live="polite" aria-atomic="true">
+                  {categories.map(([category]) => <div key={category}><dt>{category}</dt><dd>{menu.options.find(item => item.id === selections[category])?.name || "Choose an option"}</dd></div>)}
+                </dl>
+                <p className="summary-total"><span>Complete lunch<small>Tax included</small></span><strong>{money(menu.priceCents)}</strong></p>
+                <p className="hint">{complete ? "Looking good! Review your lunch below." : "One choice in each section completes your meal."}</p>
+              </aside></div>
+              {demoStore && menu.options.some((item) => item.imageUrl) && (
                 <p className="photo-note">
                   Sample menu photos for this demo. Actual meals may vary.
                 </p>
               )}
               <div className="review-order-bar">
-                <span>
+                <span className="review-bar-copy"><b>Your lunch · {money(menu.priceCents)}</b><small>
                   {complete
                     ? "Your complete lunch is ready to review."
                     : "Choose one option in each section."}
-                </span>
+                </small></span>
                 <button
                   className="primary"
                   disabled={!complete || !data.orderingOpen}

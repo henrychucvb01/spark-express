@@ -10,7 +10,7 @@ export default function DemoExperience({ onExit }) {
     <section className="dashboard demo-experience">
       <div className="demo-banner">
         <span>
-          <b>Cafe LA Express demo</b> · Fictional faculty account
+          <b>Demo Mode</b> — Sample orders only
         </span>
         <button className="inline-button" onClick={onExit}>
           Exit demo
@@ -21,9 +21,8 @@ export default function DemoExperience({ onExit }) {
           <div className="dashboard-heading">
             <p className="eyebrow">BANNING HS · SAMPLE WORKFLOW</p>
             <h1>
-              Hello, Demo Faculty.
-              <br />
-              <em>Let’s make lunch easy.</em>
+              Welcome back, Demo Faculty.
+              <em> Lunch just got easier.</em>
             </h1>
           </div>
           <OrderingExperience

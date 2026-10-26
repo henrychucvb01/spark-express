@@ -1,0 +1,89 @@
+/* Café LA Express: presentation only; ordering and account rules stay server controlled. */
+:root { --navy:#091f46; --gold:#e7ad36; --ivory:#fff9f0; --cream:#f7eedc; --ink:#263044; --green:#32846a; background:var(--ivory); color:var(--ink); }
+h1,h2,h3,.brand { color:var(--navy); }
+.header { height:88px; border-color:#e8dfcf; }
+.primary,.outline { border-radius:14px; min-height:48px; transition:transform .18s,box-shadow .18s,background .18s; }
+.primary { background:var(--navy); border-color:var(--navy); box-shadow:none; }
+.primary:active:enabled,.outline:active:enabled { transform:scale(.98); }
+.hero { padding-top:36px; padding-bottom:40px; gap:40px; }
+.hero h1 { font-size:clamp(42px,5vw,68px); margin:15px 0 20px; }
+.hero-description { max-width:440px; line-height:1.7; }
+.cafe-hero-photo { margin:0; position:relative; border-radius:30px; overflow:hidden; box-shadow:0 18px 45px #3c2b1714; transform:rotate(1deg); }
+.cafe-hero-photo img { width:100%; height:360px; object-fit:cover; display:block; }
+.cafe-hero-photo figcaption { background:#fff; padding:18px 22px; }
+.cafe-hero-photo figcaption span { font-size:11px; font-weight:800; letter-spacing:.1em; color:var(--navy); }
+.cafe-hero-photo figcaption small { display:block; font-size:11px; margin-top:7px; color:#626771; }
+.how { padding-top:35px; padding-bottom:35px; background:var(--cream); }
+.dashboard { padding-top:24px; padding-bottom:35px; }
+.dashboard-heading { margin-bottom:20px; }
+.dashboard-heading h1,.demo-experience .dashboard-heading h1 { font-size:clamp(25px,3vw,36px); letter-spacing:-1px; line-height:1.25; margin:8px 0 16px; }
+.dashboard-heading h1 em { display:block; font-size:.8em; margin-top:6px; }
+.demo-banner { padding:9px 15px; margin-bottom:18px; background:#fff; border-color:#e7deca; border-radius:12px; }
+.demo-tools { background:transparent; border:0; padding:0; margin:0 0 12px; justify-content:flex-end; }
+.demo-tools button,.demo-banner button { min-height:44px; }
+.cafe-menu-board { background:transparent; border:0; color:var(--ink); padding:0; }
+.cafe-menu-board .menu-heading { padding-bottom:16px; margin-bottom:16px; border-color:#e4d9c5; align-items:flex-start; }
+.menu-board-brand > img { display:none; }
+.cafe-menu-board .eyebrow { color:#6b5832; }
+.cafe-menu-board .menu-heading h2 { font-family:Georgia,serif; font-size:clamp(28px,3vw,38px); color:var(--navy); font-weight:400; letter-spacing:-1px; }
+.menu-board-tagline { color:#596170; letter-spacing:0; font-size:13px; }
+.cafe-menu-board .meal-price { background:var(--cream); border:1px solid #e7d6af; border-radius:16px; padding:12px 18px; }
+.cafe-menu-board .meal-price b { color:#815409; font-size:28px; }
+.cafe-menu-board .meal-price span { color:#5b503b; font-size:11px; }
+.cafe-menu-board .menu-explanation { color:#596170; margin-bottom:10px; }
+.cafe-menu-board .cutoff-note { color:#735217; background:#f7eedc; display:inline-block; padding:8px 12px; border-radius:20px; margin-bottom:22px; }
+.cafe-order-layout { display:grid; grid-template-columns:minmax(0,1fr) 270px; align-items:start; gap:26px; }
+.cafe-selections { min-width:0; }
+.cafe-menu-board .menu-component legend { font-family:Arial,Helvetica,sans-serif; color:var(--navy); font-size:19px; font-weight:700; }
+.cafe-menu-board .menu-component legend > span { color:#916319; background:var(--cream); border-radius:50%; padding:7px; font-size:12px; margin-right:10px; }
+.menu-choice { transition:transform .18s,box-shadow .18s,border-color .18s; min-height:64px; }
+.menu-choice:hover { transform:translateY(-2px); box-shadow:0 7px 20px #1724410c; }
+.menu-choice:focus-within { outline:3px solid var(--navy); outline-offset:4px; }
+.entree-choice,.entree-choice.selected { border-radius:20px; background:#fff; border-color:#e6dfd3; }
+.entree-choice.selected { border-color:var(--gold); box-shadow:0 0 0 2px var(--gold); }
+.menu-photo-frame { aspect-ratio: 4/3; }
+.entree-choice .menu-choice-copy { padding:18px; text-align:left; }
+.entree-choice .menu-choice-copy > b { font-family:Arial,Helvetica,sans-serif; font-size:20px; text-transform:none; letter-spacing:-.3px; margin:0; }
+.entree-choice .menu-choice-copy > small { color:#596170; margin-top:8px; }
+.entree-card-footer { border-color:#eee7dc; color:#5c5038; padding:12px 17px; }
+.entree-choice.selected .entree-card-footer { background:#fff0c9; }
+.cafe-menu-board .menu-choice:not(.entree-choice) { background:#fff; border-radius:14px; }
+.cafe-menu-board .menu-choice.selected:not(.entree-choice) { background:#fff4d9; border-color:var(--gold); }
+.cafe-summary { position:sticky; top:20px; padding:22px; border:1px solid #e7dfd1; background:white; border-radius:22px; box-shadow:0 10px 28px #3a30100a; }
+.cafe-summary h3 { font-family:Georgia,serif; font-size:27px; margin-bottom:16px; }
+.cafe-summary dl { margin:0; }
+.cafe-summary dl > div { padding:12px 0; border-bottom:1px solid #eee8de; }
+.cafe-summary dt { text-transform:capitalize; color:#616877; font-size:11px; margin-bottom:5px; }
+.cafe-summary dd { margin:0; font-size:13px; line-height:1.5; color:var(--navy); font-weight:600; overflow-wrap:anywhere; }
+.summary-total { display:flex; justify-content:space-between; gap:12px; align-items:center; margin:20px 0 10px; font-size:13px; }
+.summary-total small { display:block; color:#636b77; font-size:11px; margin-top:4px; }
+.summary-total strong { color:#815409; font-size:24px; }
+.cafe-menu-board .photo-note { color:#626976; margin-top:12px; }
+.cafe-menu-board .review-order-bar { border-color:#dfd5c4; background:var(--ivory); padding:16px 0; gap:16px; }
+.cafe-menu-board .review-order-bar > span { color:var(--navy); }
+.review-bar-copy b,.review-bar-copy small { display:block; }
+.review-bar-copy small { font-size:11px; margin-top:5px; color:#5c6574; }
+.cafe-menu-board .review-order-bar .primary { background:var(--navy); color:white; border-color:var(--navy); box-shadow:none; }
+.cafe-menu-board .review-order-bar .primary:hover:enabled { background:#173762; }
+.menu-board-footer { background:var(--cream); border-radius:12px; margin:16px 0 0; }
+.order-confirmation { background:#fff; border-radius:24px; border-color:#e9dfcd; box-shadow:0 14px 35px #37250c08; }
+.order-confirmation > .eyebrow { color:var(--green); }
+.order-progress .reached span { background:var(--green); color:white; }
+.order-detail { border-radius:16px; background:var(--ivory); }
+.scan-demo { border-radius:18px; }
+@media(max-width:1000px) { .cafe-order-layout { grid-template-columns:minmax(0,1fr) 230px; gap:18px; } .entree-component .menu-options { gap:14px; } }
+@media(max-width:760px) {
+ .header { height:78px; padding:0 5%; } .brand b { font-size:22px; }
+ .hero { grid-template-columns:1fr; padding:26px 5%; gap:24px; } .hero h1 { font-size:44px; margin:10px 0 14px; } .hero-description { margin-bottom:18px; }
+ .cafe-hero-photo { transform:none; border-radius:22px; } .cafe-hero-photo img { height:240px; }
+ .dashboard { padding:20px 5% 30px; } .cafe-order-layout { grid-template-columns:1fr; } .cafe-summary { position:static; padding:18px; }
+ .cafe-summary dl { display:grid; grid-template-columns:1fr 1fr; gap:0 18px; }
+ .cafe-menu-board .menu-heading { gap:14px; } .cafe-menu-board .meal-price { flex-direction:row; align-items:center; gap:14px; }
+ .cafe-menu-board .review-order-bar { position:sticky; bottom:0; z-index:5; padding:12px max(12px,env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)); border:1px solid #e3d8c4; border-radius:16px; box-shadow:0 -6px 22px #17244110; margin-top:16px; }
+ .review-order-bar .primary { padding:12px; font-size:12px; gap:6px; } .review-bar-copy { min-width:0; font-size:13px; flex:1; } .review-bar-copy small { max-width:150px; line-height:1.4; }
+ .entree-component .menu-options { grid-template-columns:repeat(2,minmax(0,1fr)); } .entree-choice .menu-choice-copy { padding:14px; } .entree-choice .menu-choice-copy > b { font-size:17px; }
+ .entree-card-footer { padding:12px; font-size:10px; } .cafe-menu-board .menu-component legend { font-size:18px; }
+ .order-progress { display:grid; grid-template-columns:1fr 1fr; }
+}
+@media(max-width:390px) { .entree-component .menu-options { grid-template-columns:1fr; } .brand-mark { width:36px; height:36px; } .header nav { gap:10px; } .header .outline { padding:10px 12px; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }

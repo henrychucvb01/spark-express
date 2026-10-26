@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./styles.css";
 import DemoExperience from "./ordering/DemoExperience";
 import FacultyOrdering from "./ordering/FacultyOrdering";
+import "./cafe.css";
 
 async function api(action, values = {}) {
   const response = await fetch("/api/account", {
@@ -283,9 +284,9 @@ function App() {
                   <span className="status-dot" /> A LITTLE MORE TIME FOR YOU
                 </p>
                 <h1>
-                  A better
+                  Lunch just
                   <br />
-                  kind of <em>lunch break.</em>
+                  <em>got easier.</em>
                 </h1>
                 <p className="intro">
                   Good food. Your campus. One less thing to think about.
@@ -316,48 +317,10 @@ function App() {
                   </button>
                 </p>
               </div>
-              <div className="hero-art" aria-hidden="true">
-                <div className="art-caption">
-                  YOUR LUNCH BREAK,
-                  <br />
-                  <em>made easy.</em>
-                </div>
-                <div className="plate">
-                  <div className="plate-inner">
-                    <div className="salad">
-                      <i />
-                      <i />
-                      <i />
-                      <i />
-                      <i />
-                      <i />
-                    </div>
-                    <div className="tomatoes">
-                      <i />
-                      <i />
-                      <i />
-                    </div>
-                    <div className="bread">
-                      <i />
-                      <i />
-                      <i />
-                    </div>
-                    <div className="grain">
-                      <i />
-                      <i />
-                      <i />
-                      <i />
-                      <i />
-                    </div>
-                  </div>
-                </div>
-                <span className="art-spark">✦</span>
-                <span className="meal-stamp">
-                  <Icon type="leaf" /> MADE ON
-                  <br />
-                  YOUR CAMPUS
-                </span>
-              </div>
+              <figure className="cafe-hero-photo">
+                <img src="/menu-photos/chicken-rice.webp" alt="Sample chicken and rice lunch with fresh vegetables" width="1200" height="800" fetchPriority="high" />
+                <figcaption><span>GOOD FOOD. A LITTLE MORE YOU TIME.</span><small>Sample food photography · Actual school menus vary</small></figcaption>
+              </figure>
             </section>
             <section className="how" aria-labelledby="how-title">
               <div className="section-intro">
@@ -464,8 +427,8 @@ function App() {
                 {state.account.schoolName} · {state.account.schoolCode}
               </p>
               <h1>
-                Hello, {state.account.name.split(" ")[0]}.<br />
-                <em>Let’s make lunch easy.</em>
+                Welcome back, {state.account.name.split(" ")[0]}.
+                <em> Lunch just got easier.</em>
               </h1>
             </div>
             <div className="dashboard-grid">
